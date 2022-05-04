@@ -31,14 +31,5 @@ def users_post(username):
     return render_template("user-feed.html", user=user)
 
 
-@app.route("/api/posts")
-def api_post():
-    return f"{get_posts_all()}"
-
-
-@app.route("/api/posts/<int:post_id>")
-def api_post_id(post_id):
-    post = get_post_by_pk(post_id)
-    return f"{post}"
-
-app.run()
+if __name__ == '__main__':
+    app.run()
