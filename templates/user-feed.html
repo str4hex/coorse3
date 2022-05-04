@@ -28,7 +28,7 @@
         {% for users in user %}
       <div class="items__item item">
         <div class="item__top">
-          <a href="/user-feed/{{ users.poster_name }}" class="item__head">
+          <a href="/users/{{ users.poster_name }}" class="item__head">
             <div class="item__ava-wrap">
               <img src="{{users.poster_avatar}}" alt="" class="item__ava" width="47">
             </div>
@@ -38,7 +38,7 @@
         <a href="/posts/{{users.pk}}" class="item__post-link">
           <img src="{{users.pic}}" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr"><a href="#" class="item__tag">#food</a> {{users.content|truncate(30, True, '...')}}</p>
+        <p class="item__descr"><a href="#" class="item__tag">#food</a> {{users.content|truncate(50, True, '...')}}</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">

@@ -47,11 +47,41 @@ def search_for_posts(query):
             search_post.append(search)
     return search_post
 
-
-def get_post_by_pk(pk):  # возвращает один пост по его идентификатору
+# возвращает один пост по его идентификатору
+def get_post_by_pk(pk):
     load_post = load_json(DATA_PATH)
     posts = []
     for post in load_post:
         if pk == post["pk"]:
             posts.append(post)
     return posts
+
+
+# Добавляет закладку в избранное
+def add_bookmarks(post_id):
+    load_post = load_json(DATA_PATH)
+    load_bookmarks = load_json(BOOKMARKS_PATH)
+    post = []
+    for bookmarks in load_bookmarks:
+        if post_id == bookmarks["pk"]:
+            post.append(bookmarks["pk"])
+    if post_id in post:
+        pass
+    else:
+        with open(BOOKMARKS_PATH, "w", encoding="utf8") as file:
+            for post in load_post:
+                if post_id == post["pk"]:
+                    load_bookmarks.append(post)
+                    return json.dump(load_bookmarks, file, ensure_ascii=True)
+    return print(post)
+
+
+#Удалить закладку из избраного
+def remove_bookmarks(post_id):
+    load_bookmarks = load_json(BOOKMARKS_PATH)
+    with open(BOOKMARKS_PATH, "w") as file:
+        for bookmarks in range(len(load_bookmarks)):
+            if post_id == load_bookmarks[bookmarks]["pk"]:
+                load_bookmarks.pop(bookmarks)
+                return json.dump(load_bookmarks, file, ensure_ascii=True)
+    return load_bookmarks

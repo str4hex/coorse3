@@ -18,7 +18,7 @@
       </a>
       <a href="/bookmarks" class="header__bookmark-btn">
         <img src="/static/img/bookmark.png" alt="" class="header__bookmark-icon" width="28">
-        <span class="header__bookmark-counter">3</span>
+        <span class="header__bookmark-counter">{{ bookmarks|length }}</span>
       </a>
     </div>
   </header>
@@ -37,7 +37,7 @@
         <a href="/posts/{{ all_posts.pk }}" class="item__post-link">
           <img src="{{all_posts.pic}}" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr">{{ all_posts.content|truncate(30, True, '...') }}</p>
+        <p class="item__descr">{{ all_posts.content|truncate(50, True, '...') }}</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="/static/img/eye.png" alt="" class="item__counter-icon" width="26">
@@ -47,7 +47,7 @@
         <div class="item__post-bottom">
           <a href="/posts/{{ all_posts.pk }}" class="item__btn-more">Подробнее</a>
           <button type="button" class="item__bookmark-btn">
-            <img src="/static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+            <a href="/bookmarks/add/{{ all_posts.pk }}"><img src="/static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24"></a>
           </button>
         </div>
       </div>
